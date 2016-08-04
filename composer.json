@@ -1,0 +1,22 @@
+{
+    "name": "jeroennoten/laravel-menu",
+    "description": "Laravel Menu",
+    "keywords": ["laravel", "menu", "cms"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeroen Noten",
+            "email": "jeroennoten@me.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "JeroenNoten\\LaravelMenu\\": "src/"
+        }
+    },
+    "require": {
+        "laravel/framework": "5.2.*",
+        "jeroennoten/laravel-package-helper": "^2.1",
+        "jeroennoten/laravel-adminlte": "^1.6"
+    }
+}
