@@ -36,7 +36,7 @@
                                 >
                                     {{ method_field('PATCH') }}
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="display_order" value="{{ $item->displayOrder + 1 }}">
+                                    <input type="hidden" name="display_order" value="{{ $item->displayOrder - 1 }}">
                                     <button type="submit"
                                             class="btn btn-xs btn-primary"
                                             @if($i == 0) disabled @endif
