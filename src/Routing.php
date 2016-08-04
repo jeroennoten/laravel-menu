@@ -26,6 +26,7 @@ class Routing
             $router->get('/', 'MenuAdminController@index')->name('index');
             $router->get('/create', 'MenuAdminController@create')->name('create');
             $router->post('/', 'MenuAdminController@store')->name('store');
+            $router->patch('/{item}', 'MenuAdminController@update')->name('update');
             $router->delete('/{item}', 'MenuAdminController@destroy')->name('destroy');
         });
     }

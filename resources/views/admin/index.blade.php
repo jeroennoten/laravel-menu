@@ -21,7 +21,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($items as $item)
+                    @foreach($items as $i => $item)
                         <tr>
                             <td>
                                 {{ $item->text }}
@@ -30,6 +30,34 @@
                                 {{ $item->url }}
                             </td>
                             <td>
+                                <form method="post"
+                                      action="{{ route('admin.menu.update', $item) }}"
+                                      style="display: inline"
+                                >
+                                    {{ method_field('PATCH') }}
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="display_order" value="{{ $item->displayOrder + 1 }}">
+                                    <button type="submit"
+                                            class="btn btn-xs btn-primary"
+                                            @if($i == 0) disabled @endif
+                                    >
+                                        <i class="fa fa-arrow-up"></i>
+                                    </button>
+                                </form>
+                                <form method="post"
+                                      action="{{ route('admin.menu.update', $item) }}"
+                                      style="display: inline"
+                                >
+                                    {{ method_field('PATCH') }}
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="display_order" value="{{ $item->displayOrder + 1 }}">
+                                    <button type="submit"
+                                            class="btn btn-xs btn-primary"
+                                            @if($i == count($items) - 1) disabled @endif
+                                    >
+                                        <i class="fa fa-arrow-down"></i>
+                                    </button>
+                                </form>
                                 <form method="post"
                                       action="{{ route('admin.menu.destroy', $item) }}"
                                       style="display: inline"

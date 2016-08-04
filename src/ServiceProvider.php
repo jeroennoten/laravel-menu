@@ -4,9 +4,9 @@ namespace JeroenNoten\LaravelMenu;
 
 use Illuminate\Config\Repository;
 use Illuminate\Events\Dispatcher;
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
+use JeroenNoten\LaravelAdminLte\ServiceProvider as AdminLteServiceProvider;
 use JeroenNoten\LaravelMenu\Models\MenuItem;
 use JeroenNoten\LaravelPackageHelper\ServiceProviderTraits\Config;
 use JeroenNoten\LaravelPackageHelper\ServiceProviderTraits\Migrations;
@@ -36,6 +36,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->app->singleton(MenuBuilder::class);
+        $this->app->register(AdminLteServiceProvider::class);
     }
 
     private function registerMenuFromConfig(Repository $config)
