@@ -3,18 +3,17 @@
 namespace JeroenNoten\LaravelMenu;
 
 use Illuminate\Config\Repository;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use JeroenNoten\LaravelAdminLte\Events\BuildingMenu;
 use JeroenNoten\LaravelAdminLte\ServiceProvider as AdminLteServiceProvider;
 use JeroenNoten\LaravelMenu\Models\MenuItem;
-use JeroenNoten\LaravelPackageHelper\ServiceProviderTraits\Config;
-use JeroenNoten\LaravelPackageHelper\ServiceProviderTraits\Migrations;
-use JeroenNoten\LaravelPackageHelper\ServiceProviderTraits\Views;
+use JeroenNoten\LaravelPackageHelper\ServiceProviderTraits;
 
 class ServiceProvider extends BaseServiceProvider
 {
-    use Views, Config, Migrations;
+    use ServiceProviderTraits;
 
     public function boot(Repository $config, Dispatcher $events, Routing $routing)
     {
@@ -61,5 +60,15 @@ class ServiceProvider extends BaseServiceProvider
         Menu::register(function () {
             return MenuItem::all()->all();
         });
+    }
+
+    /**
+     * Return the container instance
+     *
+     * @return Container
+     */
+    protected function getContainer()
+    {
+        return $this->app;
     }
 }
