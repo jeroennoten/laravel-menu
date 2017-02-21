@@ -11,7 +11,12 @@
     ```php
     JeroenNoten\LaravelMenu\ServiceProvider::class,
     ```
+    
+3. Publish the migrations:
 
+    ```
+    php artisan vendor:publish --tag=menu-migrations
+    ```
 ## Usage
 
 ```
